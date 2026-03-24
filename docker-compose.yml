@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  baserow:
+    image: baserow/baserow:latest
+    container_name: baserow
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8081:443"
+    volumes:
+      - baserow_data:/baserow/data
+    environment:
+      - BASEROW_PUBLIC_URL=http://192.168.52.94:8080
+      - DJANGO_ALLOWED_HOSTS=192.168.52.94,localhost
+
+volumes:
+  baserow_data:
+  .
